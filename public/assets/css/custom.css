@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat.ttf');
+}
+
+.font-montserrat {
+    font-family: 'Montserrat';
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+input[type="checkbox"]:focus,
+input[type="checkbox"]:checked,
+.form-select:focus,
+.uneditable-input:focus {
+    /* border-color: #045498 !important; */
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.form-check-input:checked {
+    background-color: #045498;
+    border-color: #045498;
+}
+
+a {
+    text-decoration: none;
+}
+
+.min-h-100 {
+    min-height: 100vh;
+}

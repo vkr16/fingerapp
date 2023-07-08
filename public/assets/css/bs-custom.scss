@@ -1,0 +1,21 @@
+// Override Bootstrap variables
+$primary: #045498;
+$secondary: #595d5c;
+$success: #367459;
+$info: #674f88;
+$warning: #ea823a;
+$danger: #bd1b17;
+
+$blue: #045498;
+$indigo: #674f88;
+$purple: #6c37cf;
+$pink: #ec8a9f;
+$red: #bd1b17;
+$orange: #ea823a;
+$yellow: #e7d9a2;
+$green: #367459;
+$teal: #bde4c2;
+$cyan: #70dbf3;
+
+// Import Bootstrap source files
+@import '../vendor/bootstrap-5.3.0/scss/bootstrap.scss';
