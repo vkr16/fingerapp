@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lupa Password</title>
-    <link rel="shortcut icon" href="<?= base_url('public/assets/img/logo.svg') ?>" type="image/x-icon">
     <?= $this->include('components/links.php') ?>
 </head>
 

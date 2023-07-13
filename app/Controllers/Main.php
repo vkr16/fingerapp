@@ -3,14 +3,15 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use Ramsey\Uuid\Uuid;
 
 class Main extends BaseController
 {
-
     protected $db;
     protected $validation;
     protected $email;
     protected $session;
+    protected $uuid;
 
     public function __construct()
     {
@@ -71,8 +72,11 @@ class Main extends BaseController
             return json_encode($this->validation->getErrors());
         }
 
+        $this->uuid = Uuid::uuid4();
+        $data['uuid'] = $this->uuid->toString();
+
         $countUserConflict = $this->db->table('users')
-            ->select('id')
+            ->select('uuid')
             ->where('email', $data['email'])
             ->countAllResults();
 
@@ -211,12 +215,18 @@ class Main extends BaseController
                 if (!password_verify($data['password'], $result['password'])) {
                     return json_encode(['password' => 'Password tidak sesuai!']);
                 } else {
-                    $this->session->set('user_email_session', $result['email']);
+                    $this->session->set('userSession', $result['uuid']);
                     return json_encode(['response' => 'LOGIN_VALID']);
                 }
             }
         } else {
             return json_encode(['email' => 'Email tidak terdaftar!']);
         }
+    }
+
+    public function logout()
+    {
+        $this->session->remove('userSession');
+        return redirect()->to(base_url());
     }
 }

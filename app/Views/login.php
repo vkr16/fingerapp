@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masuk</title>
-    <link rel="shortcut icon" href="<?= base_url('public/assets/img/logo.svg') ?>" type="image/x-icon">
+    <link rel="manifest" href="<?= base_url('public/assets/manifest.json') ?>">
     <?= $this->include('components/links.php') ?>
 </head>
 
@@ -83,6 +83,7 @@
                     password: password
                 })
                 .done((data) => {
+                    console.log(data)
                     Notiflix.Loading.remove();
                     data = JSON.parse(data);
                     if (data.hasOwnProperty('email')) {
@@ -95,7 +96,7 @@
                     if (data.hasOwnProperty('response')) {
                         switch (data.response) {
                             case 'LOGIN_VALID':
-                                window.location.href = "<?= base_url('user') ?>";
+                                window.location.href = "<?= base_url('user/pockets') ?>";
                                 break;
                             case 'ACCOUNT_DISABLED':
                                 Notiflix.Report.failure('Akun Nonaktif', 'Akun anda dinonaktifkan, silahkan hubungi administrator <b>fm@akuonline.my.id</b> untuk informasi lebih lanjut', 'Oke');
@@ -135,6 +136,8 @@
             }
         }
     </script>
+
+    <script src="<?= base_url('public/assets/js/index.js') ?>"></script>
 </body>
 
 </html>

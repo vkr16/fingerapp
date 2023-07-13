@@ -43,3 +43,20 @@ a {
 .min-h-100 {
     min-height: 100vh;
 }
+
+.main-container {
+    padding-bottom: 100px;
+}
+
+.nav-slide-strip {
+    width: 100px;
+    height: 6px;
+    background-color: #cccccc;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scrollable-y {
+    overflow-y: auto;
+}
