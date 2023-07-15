@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, fullscreen">
     <title>Masuk</title>
-    <link rel="manifest" href="<?= base_url('public/assets/manifest.json') ?>">
     <?= $this->include('components/links.php') ?>
 </head>
 

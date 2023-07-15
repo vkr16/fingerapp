@@ -1,7 +1,7 @@
 <script src="<?= base_url('public/assets/vendor/bootstrap-5.3.0/dist/js/bootstrap.bundle.min.js') ?>"></script>
 <script src="<?= base_url('public/assets/vendor/jquery-3.7.0/jquery.min.js') ?>"></script>
 <script src="<?= base_url('public/assets/vendor/notiflix-3.2.6/notiflix-aio-3.2.6.min.js') ?>"></script>
-<script src="<?= base_url('public/assets/vendor/picmo-5.8.5/integration/lib/picmo.js') ?>"></script>
+<script src="<?= base_url('public/assets/vendor/select2-4.0.13/dist/js/select2.min.js') ?>"></script>
 <script src="<?= base_url('public/assets/vendor/numeral-js/numeral.min.js') ?>"></script>
 
 <script>
@@ -12,7 +12,8 @@
     });
     Notiflix.Report.init({
         plainText: false,
-        borderRadius: '0.25rem'
+        borderRadius: '0.25rem',
+        messageMaxLength: '2000'
     });
     Notiflix.Confirm.init({
         plainText: false,
@@ -27,11 +28,6 @@
         clickToClose: true
     });
 
-    /* 
-     * Config for Numeral JS 
-     * -----------------------------------
-     * register locale for numeral library 
-     */
     numeral.register('locale', 'id', {
         delimiters: {
             thousands: '.',

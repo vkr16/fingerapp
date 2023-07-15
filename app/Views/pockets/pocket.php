@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=NO">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, fullscreen">
     <title>Kantong</title>
     <?= $this->include('components/links') ?>
 </head>
@@ -111,7 +111,7 @@
                     <div class="mx-auto btn btn-primary rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-plus"></i></div>
                     <p class="small fw-light mt-2">Tambah Uang</p>
                 </div>
-                <div class="text-center">
+                <div class="text-center" onclick="shortcutTransferBalance()">
                     <div class="mx-auto btn btn-primary rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
                     <p class="small fw-light mt-2">Pindahkan</p>
                 </div>
@@ -321,6 +321,11 @@
         function shortcutAddBalance() {
             Notiflix.Loading.dots();
             window.location.href = "<?= base_url('user/pockets/detail/') ?>" + activePocket + "#addBalance";
+        }
+
+        function shortcutTransferBalance() {
+            Notiflix.Loading.dots();
+            window.location.href = "<?= base_url('user/pockets/detail/') ?>" + activePocket + "#transferBalance";
         }
     </script>
 </body>

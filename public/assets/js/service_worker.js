@@ -2,7 +2,7 @@
 self.addEventListener("install", e => {
     e.waitUntil(
         caches.open("static").then(cache => {
-            return cache.addAll(["./", './assets/img/fm-192.png']);
+            return cache.addAll(["./index.js", '*']);
         })
     );
 });

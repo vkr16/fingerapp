@@ -4,38 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=NO">
-    <title>Rincian Kantong</title>
+    <title>Rincian Anggaran</title>
     <?= $this->include('components/links') ?>
 </head>
 
 <body>
     <div class="bg-light font-montserrat ">
         <div class="main-container min-h-100">
-            <div class="bg-primary pb-3 rounded-bottom-4" id="header">
+            <div class="bg-info pb-3 rounded-bottom-4" id="header">
                 <div class="container">
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="pt-4 fw-bold text-light fs-3"><a href="<?= base_url('user/pockets') ?>" class="text-light" onclick="Notiflix.Loading.dots()"><i class="fa-solid fa-arrow-left"></i></a>&emsp;Rincian Kantong</p>
+                        <p class="pt-4 fw-bold text-light fs-3"><a href="<?= base_url('user/budgets') ?>" class="text-light" onclick="Notiflix.Loading.dots()"><i class="fa-solid fa-arrow-left"></i></a>&emsp;Rincian Kantong</p>
                     </div>
                     <div class="card mt-4 rounded-4" id="header-content">
                         <div class="">
                             <div class="mt-3 d-flex justify-content-center align-items-center display-2">
-                                <img id="pocketIcon" src="<?= base_url('public/assets/img/emojis/') . $pocketDetail['icon'] ?>" width="60px">
+                                <img id="budgetIcon" src="<?= base_url('public/assets/img/emojis/') . $budgetDetail['icon'] ?>" width="60px">
                             </div>
-                            <p class="text-center fw-bold mt-3 mb-0 fs-6" id="pocketName"><?= $pocketDetail['name'] ?></p>
-                            <div class="text-center"><span class="badge text-bg-primary rounded-pill fw-light" id="pocketType"> <?= $pocketDetail['type'] == 0 ? 'Tunai' : 'Non Tunai' ?> </span></div>
-                            <p class="text-center fw-bolder mt-2 fs-5" id="pocketBalance">Rp <?= number_format($pocketDetail['balance'], 0, ',', '.') ?></p>
+                            <p class="text-center fw-bold mt-3 mb-0 fs-6" id="budgetName"><?= $budgetDetail['name'] ?></p>
+
+                            <p class="text-center fw-bolder mt-2 fs-5" id="budgetBalance">Rp <?= number_format($budgetDetail['budget'], 0, ',', '.') ?></p>
 
                             <div class="d-flex justify-content-around mt-5">
-                                <div class="text-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddBalance">
-                                    <div class="mx-auto btn btn-primary rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-plus"></i></div>
-                                    <p class="small fw-light mt-2">Tambah Uang</p>
+                                <div class="text-center col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddBalance">
+                                    <div class="mx-auto btn btn-info rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-plus"></i></div>
+                                    <p class="small fw-light mt-2">Tambah</p>
                                 </div>
-                                <div class="text-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTransferBalance">
-                                    <div class="mx-auto btn btn-primary rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
-                                    <p class="small fw-light mt-2">Pindahkan</p>
+                                <div class="text-center col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTransferBalance">
+                                    <div class="mx-auto btn btn-info rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+                                    <p class="small fw-light mt-2">Pindah</p>
                                 </div>
-                                <div class="text-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMakeTransaction">
-                                    <div class="mx-auto btn btn-primary rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+                                <div class="text-center col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMakeTransaction">
+                                    <div class="mx-auto btn btn-info rounded-circle btn-lg d-flex justify-content-center align-items-center" style="width:51px;height: 51px;"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
                                     <p class="small fw-light mt-2">Kirim / Bayar</p>
                                 </div>
                             </div>
@@ -63,25 +63,25 @@
     <!-- offcanvas bottom add balance -->
     <div class="offcanvas offcanvas-bottom rounded-top-4 bg-light font-montserrat" tabindex="-1" style="min-height: 50vh;" id="offcanvasAddBalance" aria-labelledby="offcanvasAddBalanceLabel" data-is-fullscreen="false">
         <div class="offcanvas-header swiper">
-            <span class="nav-slide-strip bg-primary"></span>
+            <span class="nav-slide-strip bg-info"></span>
         </div>
         <div class="offcanvas-body">
             <div class="mb-4">
                 <p class="fw-bold"><img src="<?= base_url('public/assets/img/top-up.png') ?>" style="width: 30px;"> &nbsp; Tambahkan Uang</p>
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text bg-white border-primary text-primary fs-4"><b>Rp</b></span>
-                <input type="text" inputmode="numeric" class="form-control border-primary text-primary border-start-0 py-3 fw-bold fs-4" placeholder="0" id="inputAddBalance" oninput="formatNumber(this)">
+                <span class="input-group-text bg-white border-info text-info fs-4"><b>Rp</b></span>
+                <input type="text" inputmode="numeric" class="form-control border-info text-info border-start-0 py-3 fw-bold fs-4" placeholder="0" id="inputAddBalance" oninput="formatNumber(this)">
             </div>
 
             <div class="d-grid mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="inputAddBalanceNote" placeholder="Keterangan" oninput="charCount('#inputAddBalanceNote','#inputAddBalanceNoteLabel','Keterangan')" onblur="$('#inputAddBalanceNoteLabel').html('Keterangan')">
+                    <input type="text" class="form-control" id="inputAddBalanceNote" placeholder="Keterangan" oninput="charCount('#inputAddBalanceNote','#inputAddBalanceNoteLabel')" onblur="$('#inputAddBalanceNoteLabel').html('Keterangan')">
                     <label for="inputAddBalanceNote" id="inputAddBalanceNoteLabel">Keterangan</label>
                 </div>
             </div>
             <div class="d-grid">
-                <button class="btn btn-primary mt-3 mb-4" onclick="addPocketBalance()">Selesai</button>
+                <button class="btn btn-info mt-3 mb-4" onclick="addBudgetBalance()">Selesai</button>
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@
     <!-- offcanvas bottom transfer balance -->
     <div class="offcanvas offcanvas-bottom rounded-top-4 bg-light font-montserrat" tabindex="-1" style="min-height: 50vh; height: min-content;" id="offcanvasTransferBalance" aria-labelledby="offcanvasTransferBalanceLabel" data-is-fullscreen="false">
         <div class="offcanvas-header swiper">
-            <span class="nav-slide-strip bg-primary"></span>
+            <span class="nav-slide-strip bg-info"></span>
         </div>
         <div class="offcanvas-body">
             <div class="mb-4">
@@ -97,48 +97,48 @@
             </div>
 
             <div class="d-grid mb-3">
-                <div class="card mb-2 rounded-3" onclick="$('#selectDestinationPocket').modal('show')">
+                <div class="card mb-2 rounded-3" onclick="$('#selectDestinationBudget').modal('show')">
                     <div class="card-body py-1 d-flex justify-content-between align-items-center">
                         <span>
                             <span style="font-size: 10pt;">
                                 Kantong Tujuan
                             </span>
                             <br>
-                            <span class="fw-bolder" id="selectedPocketDestinationName">
+                            <span class="fw-bolder" id="selectedBudgetDestinationName">
                                 Pilih Kantong
                             </span>
                         </span>
-                        <span class="text-primary ms-4 py-2">
-                            <img src="<?= base_url('public/assets/img/emojis/money-bag.png') ?>" width="30px" id="selectedPocketDestinationIcon">
+                        <span class="text-info ms-4 py-2">
+                            <img src="<?= base_url('public/assets/img/emojis/money-bag.png') ?>" width="30px" id="selectedBudgetDestinationIcon">
                         </span>
                     </div>
                 </div>
             </div>
-            <input type="password" id="selectedPocketDestinationUuid" class="d-none">
+            <input type="password" id="selectedBudgetDestinationUuid" class="d-none">
 
             <div class="d-grid mb-3">
                 <div class="input-group mb-3">
-                    <span class="input-group-text bg-white border-primary text-primary fs-4"><b>Rp</b></span>
-                    <input type="text" inputmode="numeric" class="form-control border-primary text-primary border-start-0 py-3 fw-bold fs-4" placeholder="0" id="inputTransferAmount" oninput="formatNumber(this)">
+                    <span class="input-group-text bg-white border-info text-info fs-4"><b>Rp</b></span>
+                    <input type="text" inputmode="numeric" class="form-control border-info text-info border-start-0 py-3 fw-bold fs-4" placeholder="0" id="inputTransferAmount" oninput="formatNumber(this)">
                 </div>
             </div>
 
             <div class="d-grid mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="inputTransferAmountNote" placeholder="Keterangan" oninput="charCount('#inputTransferAmountNote','#inputTransferAmountNoteLabel','Keterangan')" onblur="$('#inputTransferAmountNoteLabel').html('Keterangan')">
+                    <input type="text" class="form-control" id="inputTransferAmountNote" placeholder="Keterangan" oninput="charCount('#inputTransferAmountNote','#inputTransferAmountNoteLabel')" onblur="$('#inputTransferAmountNoteLabel').html('Keterangan')">
                     <label for="inputTransferAmountNote" id="inputTransferAmountNoteLabel">Keterangan</label>
                 </div>
             </div>
             <div class="d-grid">
-                <button class="btn btn-primary mt-3 mb-4" onclick="transferBalance()">Selesai</button>
+                <button class="btn btn-info mt-3 mb-4" onclick="transferBalance()">Selesai</button>
             </div>
         </div>
     </div>
 
-    <!-- offcanvas bottom make transaction -->
+    <!-- offcanvas bottom transfer balance -->
     <div class="offcanvas offcanvas-bottom rounded-top-4 bg-light font-montserrat" tabindex="-1" style="min-height: 50vh; height: min-content;" id="offcanvasMakeTransaction" aria-labelledby="offcanvasMakeTransactionLabel" data-is-fullscreen="false">
         <div class="offcanvas-header swiper">
-            <span class="nav-slide-strip bg-primary"></span>
+            <span class="nav-slide-strip bg-info"></span>
         </div>
         <div class="offcanvas-body">
             <div class="mb-4">
@@ -146,72 +146,32 @@
             </div>
 
 
-            <div class="d-grid mb-3">
-                <select id="selectBudgetToBeUse" class="form-control py-3" onchange="checkDestination()">
-                    <option value="">Tanpa Anggaran</option>
-                    <option value="">-</option>
-                    <?php
-                    foreach ($budgets as $key => $budget) {
-                    ?>
-                        <option value="<?= $budget['uuid'] ?>"><?= $budget['name'] . " [Rp " . number_format($budget['budget'], 0, ',', '.') . "]" ?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
-            </div>
-
-
-
-            <div class="d-grid mb-3">
-                <div class="input-group">
-                    <span class="input-group-text bg-white border-primary text-primary fs-4"><b>Rp</b></span>
-                    <input type="text" inputmode="numeric" class="form-control border-primary text-primary border-start-0 py-3 fw-bold fs-4" placeholder="0" id="inputTransactionAmount" oninput="formatNumber(this)">
-                </div>
-            </div>
-
-            <div class="d-grid mb-3" id="group-input-destination">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="inputTransactionDestination" placeholder="Keterangan" oninput="charCount('#inputTransactionDestination','#inputTransactionDestinationLabel','Tujuan')" onblur="$('#inputTransactionDestinationLabel').html('Tujuan')">
-                    <label for="inputTransactionDestination" id="inputTransactionDestinationLabel">Tujuan</label>
-                </div>
-            </div>
-
-
-
-            <div class="d-grid mb-3">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="inputTransactionNote" placeholder="Keterangan" oninput="charCount('#inputTransactionNote','#inputTransactionNoteLabel','Keterangan')" onblur="$('#inputTransactionNoteLabel').html('Keterangan')">
-                    <label for="inputTransactionNote" id="inputTransactionNoteLabel">Keterangan</label>
-                </div>
-            </div>
-
             <div class="d-grid">
-                <button class="btn btn-primary mt-3 mb-4" onclick="makeTrx()">Selesai</button>
+                <button class="btn btn-info mt-3 mb-4" onclick="transferBalance()">Selesai</button>
             </div>
         </div>
     </div>
-
-    <!-- modal select destination pocket -->
-    <div class="modal fade" id="selectDestinationPocket" tabindex="-1" aria-labelledby="selectDestinationPocketLabel" aria-hidden="true">
+    <!-- modal select destination budget -->
+    <div class="modal fade" id="selectDestinationBudget" tabindex="-1" aria-labelledby="selectDestinationBudgetLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content rounded-3" style="max-height: fit-content;">
                 <div class="modal-body">
-                    <div id="listOtherPocket">
+                    <div id="listOtherBudget">
                         <?php
-                        foreach ($pockets as $key => $pocket) {
+                        foreach ($budgets as $key => $budget) {
                         ?>
-                            <div class="card mb-2 rounded-3" onclick="selectPocket('<?= $pocket['name'] ?>','<?= $pocket['uuid'] ?>','<?= $pocket['icon'] ?>')">
+                            <div class="card mb-2 rounded-3" onclick="selectBudget('<?= $budget['name'] ?>','<?= $budget['uuid'] ?>','<?= $budget['icon'] ?>')">
                                 <div class="card-body py-1 d-flex justify-content-between align-items-center">
-                                    <span class="text-primary me-4 py-2">
-                                        <img src="<?= base_url('public/assets/img/emojis/' . $pocket['icon'] . '') ?>" width="30px">
+                                    <span class="text-info me-4 py-2">
+                                        <img src="<?= base_url('public/assets/img/emojis/' . $budget['icon'] . '') ?>" width="30px">
                                     </span>
                                     <span class="text-end ">
                                         <span class="fw-bolder">
-                                            <?= $pocket['name'] ?>
+                                            <?= $budget['name'] ?>
                                         </span>
                                         <br>
                                         <span class="small">
-                                            Rp <?= number_format($pocket['balance'], 0, ',', '.') ?>
+                                            Rp <?= number_format($budget['budget'], 0, ',', '.') ?>
                                         </span>
                                     </span>
                                 </div>
@@ -222,12 +182,11 @@
                     </div>
                 </div>
                 <div class="container mb-3 d-grid">
-                    <button class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+                    <button class="btn btn-info" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
     </div>
-
 
     <?= $this->include('components/bottom-nav') ?>
 
@@ -235,27 +194,27 @@
     <script>
         let modalSelector = false;
         $(document).ready(() => {
-            $('#nav_pockets').addClass('text-primary active');
+            $('#nav_budgets').addClass('text-info active');
             getTransactionList();
             var options = {
                 searchable: true
             };
         })
         let activeCanvas;
-        const activePocket = '<?= $pocketDetail['uuid'] ?>';
+        const activeBudget = '<?= $budgetDetail['uuid'] ?>';
 
         let touchstartY = 0;
         let touchendY = 0;
 
         const swipeElements = document.getElementsByClassName('swiper');
 
-        function charCount(input, label, sublabel) {
+        function charCount(input, label) {
 
             if ($(input).val().length > 31) {
                 $(input).val($(input).val().slice(0, 32));
             }
 
-            $(label).html(sublabel + " (" + $(input).val().length + "/32)")
+            $(label).html("Keterangan (" + $(input).val().length + "/32)")
         }
 
         Array.from(swipeElements).forEach(element => {
@@ -296,8 +255,8 @@
                         bootstrap.Offcanvas.getInstance('#offcanvasTransferBalance').hide();
                         break;
                     case 'c':
-                        bootstrap.Offcanvas.getInstance('#offcanvasMakeTransaction').hide()
                         break;
+                        bootstrap.Offcanvas.getInstance('#offcanvasAddBudget').hide()
                     default:
                         break;
                 }
@@ -308,12 +267,12 @@
 
             switch (offcanvas) {
                 case 'a':
-                    $('#offcanvasAddPocket').animate({
+                    $('#offcanvasAddBudget').animate({
                         height: height + 'vh'
                     }, 200);
                     break;
                 case 'b':
-                    $('#offcanvasDetailPocket').animate({
+                    $('#offcanvasDetailBudget').animate({
                         height: height + 'vh'
                     }, 200);
                     break;
@@ -330,9 +289,9 @@
         }
 
         $('#offcanvasTransferBalance').on('hidden.bs.offcanvas', event => {
-            $('#selectedPocketDestinationName').html('Pilih Kantong');
-            $('#selectedPocketDestinationUuid').val('');
-            $('#selectedPocketDestinationIcon').attr('src', "<?= base_url('public/assets/img/emojis/money-bag.png') ?>")
+            $('#selectedBudgetDestinationName').html('Pilih Kantong');
+            $('#selectedBudgetDestinationUuid').val('');
+            $('#selectedBudgetDestinationIcon').attr('src', "<?= base_url('public/assets/img/emojis/money-bag.png') ?>")
 
             activeCanvas = '';
         })
@@ -345,32 +304,28 @@
             activeCanvas = 'b';
         })
 
-        $('#offcanvasMakeTransaction').on('shown.bs.offcanvas', event => {
-            activeCanvas = 'c';
-        })
-
         function showFieldError(field, message) {
             switch (field) {
-                case 'inputPocketName':
-                    $('#inputPocketName').addClass('is-invalid');
-                    $('#errorInputPocketName').html(message);
+                case 'inputBudgetName':
+                    $('#inputBudgetName').addClass('is-invalid');
+                    $('#errorInputBudgetName').html(message);
                     break;
             }
         }
 
         function clearFieldError(field) {
             switch (field) {
-                case 'inputPocketName':
-                    $('#inputPocketName').removeClass('is-invalid');
-                    $('#errorInputPocketName').html('');
+                case 'inputBudgetName':
+                    $('#inputBudgetName').removeClass('is-invalid');
+                    $('#errorInputBudgetName').html('');
                     break;
             }
         }
 
-        function showPocketDetail(id) {
-            const offcanvasTop = new bootstrap.Offcanvas('#offcanvasDetailPocket').show();
+        function showBudgetDetail(id) {
+            const offcanvasTop = new bootstrap.Offcanvas('#offcanvasDetailBudget').show();
 
-            activePocket = id;
+            activeBudget = id;
         }
 
         $('#searchTransaction').on('focus', () => {
@@ -383,7 +338,7 @@
             $('#btnCancelSearch').addClass('d-none')
         })
 
-        function addPocketBalance() {
+        function addBudgetBalance() {
             Notiflix.Loading.dots();
             const balance = numeral($('#inputAddBalance').val()).value();
             const note = $('#inputAddBalanceNote').val();
@@ -391,8 +346,8 @@
             if (balance < 1) {
                 bootstrap.Offcanvas.getInstance('#offcanvasAddBalance').hide();
             } else {
-                $.post('<?= base_url('user/pockets/add-balance') ?>', {
-                        pocketUuid: activePocket,
+                $.post('<?= base_url('user/budgets/add-balance') ?>', {
+                        budgetUuid: activeBudget,
                         balance: balance,
                         note: note
                     })
@@ -407,7 +362,7 @@
                                     break;
                                 case 'SUCCESS':
                                     Notiflix.Notify.success('BERHASIL');
-                                    $('#pocketBalance').html(data.balance);
+                                    $('#budgetBalance').html(data.balance);
                                     bootstrap.Offcanvas.getInstance('#offcanvasAddBalance').hide();
                                     $('#inputAddBalance').val('');
                                     $('#inputAddBalanceNote').val('');
@@ -429,7 +384,7 @@
             Notiflix.Block.circle('#transactionListContainer', {
                 backgroundColor: 'transparent'
             });
-            $.get('<?= base_url('user/pockets/transaction-list/') . $pocketDetail['uuid'] ?>', (data) => {
+            $.get('<?= base_url('user/budgets/transaction-list/') . $budgetDetail['uuid'] ?>', (data) => {
                 Notiflix.Block.remove('#transactionListContainer');
                 $('#transactionListContainer').html(data);
             })
@@ -461,14 +416,14 @@
             }
         }
 
-        function selectPocket(name, uuid, icon) {
-            $('#selectDestinationPocket').modal('hide');
-            $('#selectedPocketDestinationName').html(name);
-            $('#selectedPocketDestinationUuid').val(uuid);
-            $('#selectedPocketDestinationIcon').attr('src', "<?= base_url('public/assets/img/emojis/') ?>" + icon)
+        function selectBudget(name, uuid, icon) {
+            $('#selectDestinationBudget').modal('hide');
+            $('#selectedBudgetDestinationName').html(name);
+            $('#selectedBudgetDestinationUuid').val(uuid);
+            $('#selectedBudgetDestinationIcon').attr('src', "<?= base_url('public/assets/img/emojis/') ?>" + icon)
         }
 
-        const hotfixModal = document.getElementById('selectDestinationPocket')
+        const hotfixModal = document.getElementById('selectDestinationBudget')
         hotfixModal.addEventListener('hidden.bs.modal', event => {
             modalSelector = false;
         })
@@ -483,19 +438,19 @@
         })
 
         function transferBalance() {
-            const pocketId = $('#selectedPocketDestinationUuid').val();
+            const budgetId = $('#selectedBudgetDestinationUuid').val();
             const amount = numeral($('#inputTransferAmount').val()).value();
             const note = $('#inputTransferAmountNote').val();
-            let balance = numeral($('#pocketBalance').html().substring(3)).value();
+            let balance = numeral($('#budgetBalance').html().substring(3)).value();
 
             if (balance < amount) {
                 Notiflix.Report.failure('Saldo Tidak Cukup', 'Saldo anda tidak mencukupi untuk melakukan transaksi ini!', 'Oke');
             } else {
-                $.post('<?= base_url('user/pockets/transfer-balance') ?>', {
-                        pocketId: pocketId,
+                $.post('<?= base_url('user/budgets/transfer-balance') ?>', {
+                        budgetId: budgetId,
                         amount: amount,
                         note: note,
-                        sourcePocketId: activePocket
+                        sourceBudgetId: activeBudget
                     })
                     .done((data) => {
                         data = JSON.parse(data);
@@ -503,10 +458,10 @@
                             switch (data.response) {
                                 case 'SUCCESS':
                                     Notiflix.Report.success('Transfer Berhasil',
-                                        '<body><table><tr><td class="col-5" style="vertical-align: top;">Kantong Tujuan</td><td class="col-1" style="vertical-align: top;">:</td><td class="col-6" style="vertical-align: top;">' + $('#selectedPocketDestinationName').html() + '</td></tr><tr><td class="col-5" style="vertical-align: top;">Nominal Transfer</td><td class="col-1" style="vertical-align: top;">:</td><td class="col-6" style="vertical-align: top;">Rp ' + $('#inputTransferAmount').val() + '</td></tr><tr><td class="col-5" style="vertical-align: top;">Keterangan</td><td class="col-1" style="vertical-align: top;">:</td><td class="col-6" style="vertical-align: top;">' + $('#inputTransferAmountNote').val() + '</td></tr></table>', 'Oke');
+                                        '<body><table><tr><td class="col-5" style="vertical-align: top;">Kantong Tujuan</td><td class="col-1" style="vertical-align: top;">:</td><td class="col-6" style="vertical-align: top;">' + $('#selectedBudgetDestinationName').html() + '</td></tr><tr><td class="col-5" style="vertical-align: top;">Nominal Transfer</td><td class="col-1" style="vertical-align: top;">:</td><td class="col-6" style="vertical-align: top;">Rp ' + $('#inputTransferAmount').val() + '</td></tr><tr><td class="col-5" style="vertical-align: top;">Keterangan</td><td class="col-1" style="vertical-align: top;">:</td><td class="col-6" style="vertical-align: top;">' + $('#inputTransferAmountNote').val() + '</td></tr></table>', 'Oke');
                                     bootstrap.Offcanvas.getInstance('#offcanvasTransferBalance').hide();
                                     getTransactionList();
-                                    $('#pocketBalance').html(data.balance);
+                                    $('#budgetBalance').html(data.balance);
                                     break;
                                 case 'FAILED':
                                     Notiflix.Report.failure('Terjadi Kesalahan', 'Silahkan coba lagi!', 'Oke');
@@ -527,56 +482,8 @@
                     })
 
             }
-        }
 
-        function checkDestination() {
-            if ($('#selectBudgetToBeUse').val() == '') {
-                console.log('Not Using Budget');
-                $('#group-input-destination').removeClass('d-none');
-            } else {
-                console.log('Using Budget');
-                $('#group-input-destination').addClass('d-none');
-            }
-        }
 
-        function makeTrx() {
-            const amount = numeral($('#inputTransactionAmount').val()).value();
-            const budget = $('#selectBudgetToBeUse').val();
-            const destination = $('#inputTransactionDestination').val();
-            const note = $('#inputTransactionNote').val();
-
-            $.post('<?= base_url('user/pockets/make-transaction') ?>', {
-                    pocket: activePocket,
-                    amount: amount,
-                    budget: budget,
-                    destination: destination,
-                    note: note
-                })
-                .done((data) => {
-                    data = JSON.parse(data)
-                    console.log(data);
-                    if (data.hasOwnProperty('response')) {
-                        switch (data.response) {
-                            case 'FAILED':
-                                Notiflix.Report.failure('Terjadi Kesalahan', 'Silahkan coba lagi!', 'Oke');
-                                break;
-                            case 'BUDGET_LIMIT':
-                                Notiflix.Report.failure('Transaksi Dibatalkan', 'Transaksi ini melebihi sisa anggaran anda!', 'Oke');
-                                break;
-                            case 'POCKET_LIMIT':
-                                Notiflix.Report.failure('Transaksi Dibatalkan', 'Transaksi ini melebihi sisa uang di kantong anda!', 'Oke');
-                                break;
-                            case 'SUCCESS':
-                                Notiflix.Report.success('Berhasil', 'Transaksi Berhasil', 'Tutup');
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                })
-                .fail(() => {
-                    /*  */
-                })
         }
     </script>
 </body>

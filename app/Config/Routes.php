@@ -43,12 +43,18 @@ $routes->post('/user/pockets/add', 'Pocket::addPocket');
 $routes->post('/user/pockets/add-balance', 'Pocket::addBalance');
 $routes->get('/user/pockets/list', 'Pocket::listPocket');
 $routes->get('/user/pockets/transaction-list/(:any)', 'Pocket::listTransaction/$1');
+$routes->post('/user/pockets/make-transaction', 'Pocket::makeTransaction');
 $routes->post('/user/pockets/transfer-balance', 'Pocket::transferBalance');
 $routes->get('/user/pockets/detail/(:any)', 'Pocket::detailPocket/$1');
 
+
 $routes->get('/user/budgets', 'Budget::index');
 $routes->post('/user/budgets/add', 'Budget::addBudget');
+$routes->post('/user/budgets/add-balance', 'Budget::addBalance');
 $routes->get('/user/budgets/list', 'Budget::listBudget');
+$routes->get('/user/budgets/transaction-list/(:any)', 'Budget::listTransaction/$1');
+$routes->post('/user/budgets/transfer-balance', 'Budget::transferBalance');
+$routes->get('/user/budgets/detail/(:any)', 'Budget::detailBudget/$1');
 
 
 /*
